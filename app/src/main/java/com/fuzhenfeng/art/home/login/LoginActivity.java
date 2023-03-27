@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        findViewById(R.id.button2).setOnClickListener(this);
     }
 
     @Override
@@ -31,13 +32,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(this, "用户名或密码不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
-        Http http = new HttpImpl();
-        LoginInfo loginInfo = new LoginInfo(username, password);
-        boolean result = http.post("", new Gson().toJson(loginInfo));
-        Toast.makeText(this, "连接" + (result?"成功":"失败"), Toast.LENGTH_SHORT).show();
-        if (result) {
+//        Http http = new HttpImpl();
+//        LoginInfo loginInfo = new LoginInfo(username, password);
+//        boolean result = http.post("", new Gson().toJson(loginInfo));
+//        Toast.makeText(this, "连接" + (result?"成功":"失败"), Toast.LENGTH_SHORT).show();
+//        if (result) {
             Intent home =  new Intent(LoginActivity.this, GuideActivity.class);
             startActivity(home);
-        }
+//        }
     }
 }
