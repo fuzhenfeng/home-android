@@ -42,9 +42,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     LayoutInflater inflater = LayoutInflater.from(parent.getContext());
     switch (viewType) {
       case HORIZONTAL:
-        return new Item1(inflater.inflate(R.layout.home_type1, parent, false));
+        return new ItemHorizontal(inflater.inflate(R.layout.home_type_horizontal, parent, false));
       case VERTICAL:
-        return new Item2(inflater.inflate(R.layout.home_type2, parent, false));
+        return new ItemVertical(inflater.inflate(R.layout.home_type_vertical, parent, false));
       default:
         return null;
     }
@@ -52,12 +52,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   @Override
   public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
-    if (viewHolder instanceof Item1) {
-      Item1 holder = (Item1) viewHolder;
+    if (viewHolder instanceof ItemHorizontal) {
+      ItemHorizontal holder = (ItemHorizontal) viewHolder;
       RecyclerView recyclerview = holder.recyclerView;
       recyclerview.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
       recyclerview.setHasFixedSize(true);
-      HomeItemAdapter adapter = new HomeItemAdapter(context);
+
+      HomeItemHorizontalAdapter adapter = new HomeItemHorizontalAdapter(context);
       recyclerview.setAdapter(adapter);
       ArrayList<String> pages = new ArrayList<>();
       pages.add("https://pic3.zhimg.com/80/v2-5faa2ffcac1992a2663c8746abbde9ae_hd.jpg");
@@ -66,13 +67,13 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       adapter.setPages(pages);
       return;
     }
-    if (viewHolder instanceof Item2) {
-      Item2 holder = (Item2) viewHolder;
+    if (viewHolder instanceof ItemVertical) {
+      ItemVertical holder = (ItemVertical) viewHolder;
       RecyclerView recyclerview = holder.recyclerView;
       recyclerview.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
       recyclerview.setHasFixedSize(true);
 
-      HomeItemAdapter adapter = new HomeItemAdapter(context);
+      HomeItemVerticalAdapter adapter = new HomeItemVerticalAdapter(context);
       recyclerview.setAdapter(adapter);
       ArrayList<String> pages = new ArrayList<>();
       pages.add("https://pic3.zhimg.com/80/v2-5faa2ffcac1992a2663c8746abbde9ae_hd.jpg");
@@ -83,20 +84,20 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
   }
 
-  public class Item1 extends RecyclerView.ViewHolder {
+  public class ItemHorizontal extends RecyclerView.ViewHolder {
     RecyclerView recyclerView;
 
-    public Item1(View itemView) {
+    public ItemHorizontal(View itemView) {
       super(itemView);
       recyclerView = itemView.findViewById(R.id.recyclerview1);
 
     }
   }
 
-  public class Item2 extends RecyclerView.ViewHolder {
+  public class ItemVertical extends RecyclerView.ViewHolder {
     RecyclerView recyclerView;
 
-    public Item2(View itemView) {
+    public ItemVertical(View itemView) {
       super(itemView);
       recyclerView = itemView.findViewById(R.id.recyclerview2);
     }

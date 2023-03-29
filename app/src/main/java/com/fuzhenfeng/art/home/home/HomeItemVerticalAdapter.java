@@ -13,7 +13,7 @@ import com.fuzhenfeng.art.home.R;
 
 import java.util.ArrayList;
 
-public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.HomeActivityViewHolder> {
+public class HomeItemVerticalAdapter extends RecyclerView.Adapter<HomeItemVerticalAdapter.HomeActivityViewHolder> {
 
   private Context context;
   private final LayoutInflater layoutInflater;
@@ -24,14 +24,14 @@ public class HomeItemAdapter extends RecyclerView.Adapter<HomeItemAdapter.HomeAc
     notifyDataSetChanged();
   }
 
-  public HomeItemAdapter(Context context) {
+  public HomeItemVerticalAdapter(Context context) {
     this.context = context;
     layoutInflater = LayoutInflater.from(context);
   }
 
   @Override
   public HomeActivityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new HomeActivityViewHolder(layoutInflater.inflate(R.layout.home_item, parent, false));
+    return new HomeActivityViewHolder(layoutInflater.inflate(R.layout.home_item_vertical, parent, false));
   }
 
   @Override
